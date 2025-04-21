@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: monospace;
-
 }
 
 body{
@@ -146,6 +145,168 @@ body{
   text-shadow: 2px 2px 3px red, 0px 2px 3px red;
 }
 
+.label {
+	margin: 1.8cqw;
+  padding: .375rem 0;
+	font-family: 'Fira Sans', sans-serif;
+}
+
+.date {
+  position: absolute;
+  font-weight: bold;
+  font-size: 5cqw;
+  text-align: left;
+  
+  top:0;
+  left:0;
+  width: 25%;
+}
+
+.denomination {
+  position: absolute;
+  font-weight: bold;
+  font-size: 5cqw;
+  text-align: center;
+  
+  top:0;
+  left:30%;
+  width: 40%;
+}
+
+.grade {
+  position: absolute;
+  font-weight: bold;
+  font-size: 5cqw;
+  text-align: right;
+  
+  top:0;
+  right:0;
+  width: 15%;
+}
+
+.issuer {
+  position: absolute;
+  font-weight: bold;
+  font-size: 5cqw;
+  text-align: left;
+  
+  bottom:0;
+  left:0;
+  width: 70%;
+}
+
+.catalogNumber {
+  position: absolute;
+  font-weight: lighter;
+  font-size: 5cqw;
+  text-align: right;
+  
+  bottom:0;
+  right:0;
+  width: 20%;
+}
+
+.mintage {
+  position: absolute;
+  font-weight: lighter;
+  font-size: 4.5cqw;
+  text-align: left;
+  
+  bottom:9cqw;
+  left: 0;
+  width: 70%;
+}
+
+.details {
+  position: absolute;
+  font-weight: lighter;
+  font-style: italic;
+  font-size: 4.5cqw;
+  text-align: left;
+  
+  top:8cqw;
+  left:0;
+  width: 40%;
+}
+
+.composition {
+  position: absolute;
+  font-weight: lighter;
+  font-size: 4.5cqw;
+  text-align: right;
+  display: flex;
+  align-items: flex-end;
+  
+  bottom: 0;
+  right: 0;
+  width: 70%;
+}
+
+.mass {
+  position: absolute;
+  font-weight: lighter;
+  font-size: 4.5cqw;
+  text-align: left;
+  
+  bottom:0;
+  left:0;
+  width: 30%;
+}
+
+.diameter {
+  position: absolute;
+  font-weight: lighter;
+  font-size: 4.5cqw;
+  text-align: left;
+  
+  bottom:8cqw;
+  left:0;
+  width: 30%;
+}
+
+.date-added {
+  position: absolute;
+  font-weight: lighter;
+  font-size: 4.5cqw;
+  text-align: right;
+  
+  top:0;
+  right:0;
+  width: 30%;
+}
+
+.numista-number{
+  font-weight: lighter;
+  font-size: 4.5cqw;
+  text-align: center;
+}
+
+.qr-code {
+  position: absolute;
+  
+  top:0cqw;
+  bottom: 16.5cqw;
+  left:16.5cqw;
+  right:12cqw;
+}
+
+.parent-label-large {
+  container-type: size;
+  background: #FAF9F6;
+  position: relative;
+
+  box-shadow: 10px 10px 5px lightblue;
+
+  width: 104mm;
+  height: 104mm;
+}
+
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-left: 0px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 
 @media (max-width: 750px){
 
@@ -167,4 +328,7 @@ body{
     flex: 1;
     margin-bottom: 0.7rem;
   }
+
+
+
 }
