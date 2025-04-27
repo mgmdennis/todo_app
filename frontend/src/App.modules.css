@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@100;200;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -172,11 +172,19 @@ body{
   font-size: 5cqw;
   text-align: center;
 
-  font-family: "Fira Sans Extra Condensed", sans-serif;
+  resize: none;
+
+  /* font-family: "Fira Sans Extra Condensed", sans-serif; */
   
+  font-family: 'Fira Sans', sans-serif;
+
   top:0;
   left:30%;
   width: 40%;
+}
+
+.narrow {
+  font-family: "Fira Sans Extra Condensed", sans-serif;
 }
 
 .grade {
@@ -187,6 +195,17 @@ body{
   
   top:0;
   right:0;
+  width: 15%;
+}
+
+.grade-details {
+  position: absolute;
+  font-style: italic;
+  font-size: 4cqw;
+  text-align: right;
+  
+  top: 6cqw;
+  right: 0;
   width: 15%;
 }
 
@@ -228,6 +247,7 @@ body{
   font-weight: lighter;
   /* font-style: italic; */
   font-size: 4.5cqw;
+  font-weight: 200;
   text-align: left;
 
   resize: none;
@@ -241,7 +261,7 @@ body{
 
 .composition {
   position: absolute;
-  font-weight: lighter;
+  font-weight: 100;
   font-size: 4.5cqw;
   text-align: right;
   /* display: flex;
@@ -249,7 +269,7 @@ body{
 
   resize: none;
 
-  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  /* font-family: 'Fira Sans', sans-serif; */
   
   bottom: 0;
   right: 0;

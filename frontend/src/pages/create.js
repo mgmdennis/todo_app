@@ -133,6 +133,55 @@ const Create = () => {
                         )
                     }
                 </Form.Select>
+                <Form.Select
+                    aria-label="Select Sheldon Grade"
+                    plaintext
+                    onChange={(e) => {
+                        setGrade(e.target.value);
+                    }}
+                >
+                    <option value="">Select Sheldon Grade</option>
+                    <option value="MS-70">MS-70</option>
+                    <option value="MS-69">MS-69</option>
+                    <option value="MS-68">MS-68</option>
+                    <option value="MS-67">MS-67</option>
+                    <option value="MS-66">MS-66</option>
+                    <option value="MS-65">MS-65</option>
+                    <option value="MS-64">MS-64</option>
+                    <option value="MS-63">MS-63</option>
+                    <option value="MS-62">MS-62</option>
+                    <option value="MS-61">MS-61</option>
+                    <option value="MS-60">MS-60</option>
+                    <option value="UNC">UNC (Uncirculated)</option>
+                    <option value="AU">AU (About Uncirculated)</option>
+                    <option value="AU-55">AU-55</option>
+                    <option value="AU-50">AU-50</option>
+                    <option value="EF+">EF+ (Extremely Fine Plus)</option>
+                    <option value="EF">EF (Extremely Fine)</option>
+                    <option value="EF-45">EF-45</option>
+                    <option value="EF-40">EF-40</option>
+                    <option value="VF+">VF+ (Very Fine Plus)</option>
+                    <option value="VF">VF (Very Fine)</option>
+                    <option value="VF-30">VF-30</option>
+                    <option value="VF-20">VF-20</option>
+                    <option value="F+">F+ (Fine Plus)</option>
+                    <option value="F">F (Fine)</option>
+                    <option value="F-15">F-15 (Fine 15)</option>
+                    <option value="F-12">F-12 (Fine 12)</option>
+                    <option value="VG+">VG+ (Very Good Plus)</option>
+                    <option value="VG">VG (Very Good)</option>
+                    <option value="VG-10">VG-10 (Very Good 10)</option>
+                    <option value="VG-8">VG-8 (Very Good 8)</option>
+                    <option value="G+">G+ (Good Plus)</option>
+                    <option value="G">G (Good)</option>
+                    <option value="G-6">G-6 (Good 6)</option>
+                    <option value="G-4">G-4 (Good 4)</option>
+                    <option value="AG+">AG+ (About Good Plus)</option>
+                    <option value="AG">AG (About Good)</option>
+                    <option value="AG-3">AG-3 (About Good 3)</option>
+                    <option value="Proof">Proof</option>
+                    <option value="Specimen">Specimen</option>
+                </Form.Select>
             </div>
             <div className="parent-label-large">
                 <Form.Control
@@ -156,7 +205,9 @@ const Create = () => {
                     aria-label="Denom"
                     value={denomination}
                     plaintext
-                    className="label denomination"
+                    as="textarea"
+                    rows={2}
+                    className={"label denomination" + (denomination.length > 15 ? " narrow" : "")}
                     onChange={(e) => setDenomination(e.target.value)}
                 />
                 <Form.Control
@@ -166,6 +217,15 @@ const Create = () => {
                     plaintext
                     className="label grade"
                     onChange={(e) => setGrade(e.target.value)}
+                />
+
+                <Form.Control
+                    placeholder="Grade Details"
+                    aria-label="Grade Details"
+                    value={gradeDetails}
+                    plaintext
+                    className="label grade-details"
+                    onChange={(e) => setGradeDetails(e.target.value)}
                 />
                 <Form.Control
                     placeholder="Mintage"
@@ -182,7 +242,7 @@ const Create = () => {
                     plaintext
                     className="label details"
                     as="textarea"
-                    rows={3}
+                    rows={6}
                     onChange={(e) => setDetails(e.target.value)}
                 />
                 <Form.Control
@@ -197,7 +257,9 @@ const Create = () => {
             <p />
             <div className="parent-label-large">
                 <p
-                    className="label composition">{composition}</p>
+                    className={"label composition " + (composition.length > 30 ? " narrow" : "")}>
+                    {composition}
+                </p>
                 <Form.Control
                     placeholder="Mass"
                     aria-label="Mass"
