@@ -5,6 +5,7 @@ import axios from "axios";
 
 
 import Form from 'react-bootstrap/Form';
+import Stack from 'react-bootstrap/Stack';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 
@@ -20,7 +21,7 @@ const Create = () => {
     const [grade, setGrade] = useState("");
     const [gradeDetails, setGradeDetails] = useState("");   
     const [issuer, setIssuer] = useState("");
-    const [catalogNumber, setCatalogNumber] = useState("");
+    const [reference, setReference] = useState("");
     const [mintage, setMintage] = useState("");
     const [composition, setComposition] = useState("");
     const [mass, setMass] = useState("");
@@ -37,17 +38,29 @@ const Create = () => {
         setIssuer(jsonData.issuer);
         setComposition(jsonData.composition);
         setMass(jsonData.mass);
-        setDiameter(jsonData.diameter);
+        if (jsonData.diameter.length > 0) {
+            setDiameter("⌀ " + jsonData.diameter);
+        }
+        
         
         if (jsonData.variations && jsonData.variations.length > 0) {
             updateFillOutDateAndDetails(jsonData.variations[0]);
+        }
+
+        if (jsonData.references && jsonData.references.length > 0) {
+            setReference(jsonData.references[0]);
         }
     }
 
     var updateFillOutDateAndDetails = (variation) => {
         setYear(variation.date);
-        setMintage(variation.mintage);
 
+        if (variation.mintage.length > 0) {
+            setMintage("m. " + variation.mintage);
+        } else {
+            setMintage("");
+        }
+        
         var comments = variation.comment;
 
         if(comments.includes("Proof")) {
@@ -102,6 +115,24 @@ const Create = () => {
                         )
                     }
                 </Form.Select>
+                <Form.Select
+                    aria-label="Default select example"
+                    plaintext
+                    onChange={(e) => {
+                        setReference(e.target.value);
+                    }}>
+                    {
+                        (numistaDetails && numistaDetails.references && numistaDetails.references.length > 0) ? (
+                            numistaDetails.references.map((ref, index) => (
+                                <option key={index} value={ref}>
+                                    {ref}
+                                </option>
+                            ))
+                        ) : (
+                            <option value="0">No References</option>
+                        )
+                    }
+                </Form.Select>
             </div>
             <div className="parent-label-large">
                 <Form.Control
@@ -139,7 +170,7 @@ const Create = () => {
                 <Form.Control
                     placeholder="Mintage"
                     aria-label="Mintage"
-                    value={"m. " + mintage}
+                    value={mintage}
                     plaintext
                     className="label mintage"
                     onChange={(e) => setMintage(e.target.value)}
@@ -154,19 +185,19 @@ const Create = () => {
                     rows={3}
                     onChange={(e) => setDetails(e.target.value)}
                 />
+                <Form.Control
+                    placeholder="Ref"
+                    aria-label="Ref"
+                    value={reference}
+                    plaintext
+                    className="label reference"
+                    onChange={(e) => setReference(e.target.value)}
+                />
             </div>
             <p />
             <div className="parent-label-large">
-                <Form.Control
-                    placeholder="Composition"
-                    aria-label="Composition"
-                    value={composition}
-                    plaintext
-                    className="label composition"
-                    as="textarea"
-                    rows={Math.min(3, composition.split('\n').length)}
-                    onChange={(e) => setComposition(e.target.value)}
-                />
+                <p
+                    className="label composition">{composition}</p>
                 <Form.Control
                     placeholder="Mass"
                     aria-label="Mass"
@@ -178,7 +209,7 @@ const Create = () => {
                 <Form.Control
                     placeholder="Diameter"
                     aria-label="Diameter"
-                    value={"⌀ " + diameter}
+                    value={diameter}
                     plaintext
                     className="label diameter"
                     onChange={(e) => setDiameter(e.target.value)}
@@ -193,10 +224,10 @@ const Create = () => {
                 />
                 
                 <div className="qr-code">
-                    <p className="label numista-number">{`(N# ${numistaNumber})`}</p>
                     <QRCode
                         value={`https://numista.com/catalogue/pieces${numistaNumber}.html`}
                      />
+                     <p className="label numista-number">{`(N# ${numistaNumber})`}</p>
                 </div>
             </div>
             

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +11,7 @@
 
 body{
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   /* background: linear-gradient(135deg, #933893, #22242b); */
 
@@ -146,8 +150,8 @@ body{
 }
 
 .label {
-	margin: 1.8cqw;
-  padding: .375rem 0;
+	margin: 1.1cqw;
+  padding: .1rem 0;
 	font-family: 'Fira Sans', sans-serif;
 }
 
@@ -167,6 +171,8 @@ body{
   font-weight: bold;
   font-size: 5cqw;
   text-align: center;
+
+  font-family: "Fira Sans Extra Condensed", sans-serif;
   
   top:0;
   left:30%;
@@ -220,13 +226,17 @@ body{
 .details {
   position: absolute;
   font-weight: lighter;
-  font-style: italic;
+  /* font-style: italic; */
   font-size: 4.5cqw;
   text-align: left;
+
+  resize: none;
   
   top:8cqw;
   left:0;
   width: 40%;
+
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
 }
 
 .composition {
@@ -234,8 +244,12 @@ body{
   font-weight: lighter;
   font-size: 4.5cqw;
   text-align: right;
-  display: flex;
-  align-items: flex-end;
+  /* display: flex;
+  align-items: flex-end; */
+
+  resize: none;
+
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
   
   bottom: 0;
   right: 0;
@@ -277,17 +291,28 @@ body{
 
 .numista-number{
   font-weight: lighter;
-  font-size: 4.5cqw;
+  font-size: 3cqw;
   text-align: center;
+}
+
+.reference {
+  position: absolute;
+  font-weight: bold;
+  font-size: 4.5cqw;
+  text-align: right;
+  
+  bottom:0;
+  right:0;
+  width: 25%;
 }
 
 .qr-code {
   position: absolute;
   
-  top:0cqw;
+  top:10cqw;
   bottom: 16.5cqw;
   left:16.5cqw;
-  right:12cqw;
+  right:16.5cqw;
 }
 
 .parent-label-large {

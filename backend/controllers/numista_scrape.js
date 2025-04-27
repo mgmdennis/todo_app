@@ -9,6 +9,10 @@ const logArrayElements = (element, index /*, array */) => {
     }
   };
 
+function removeTooltips($) {
+    $('.tooltip').remove(); // Select all elements with the class 'tooltip' and remove them
+}
+
 function fetchHtml(url) {
     return new Promise((resolve, reject) => {
         request(url, (error, response, html) => {
@@ -66,8 +70,9 @@ function getFeatureValue($_var, header) {
 function getDenomination($_var) {
     const $ = $_var;
     var raw = getFeatureValue($, 'Value').split('\n')[0];
-    const regex = /[0-9A-Za-z =]+/g;
-    const denomination = raw.match(regex)[0].trim();
+    // const regex = /[0-9A-Za-z =\/]+/g;
+    // const denomination = raw.match(regex)[0].trim();
+    denomination = raw;
     return denomination;
 }
 
@@ -83,13 +88,22 @@ function getIssuer($_var) {
 
 function getReferences($_var) {
     const $ = $_var
-    var raw = getFeatureValue($, 'References')
+    var raw = getReferenceFeatureValue($, 'References')
 
     //const regex = /([A-Za-z]+#\s([A-Za-z]+\s[0-9]+))|([A-Za-z]+#\s([A-Za-z0-9\.-]+))/g;
     // const references = raw.match(regex);
-    const references = raw;
+    const referencesStr = raw.replace(/#/g, '');
+    const references = referencesStr.split(',').map(ref => ref.trim());
 
     return references;
+}
+
+function getReferenceFeatureValue($_var, header) {
+    const $ = $_var;
+    var value = $('th').filter(function() {
+        return $(this).text().indexOf(header) > -1;
+    }).next().text();
+    return value.trimStart().trimEnd();
 }
 
 function getDescription($_var) {
@@ -109,8 +123,10 @@ async function getNumistaDetailsJSON(numistaNumber) {
 
         const html = await fetchHtml(url); // Wait for the request to complete
         const $ = cheerio.load(html);
+        removeTooltips($);
 
         const features = {
+
             denomination: getDenomination($),
             issuer: getIssuer($),
             composition: getFeatureValue($, 'Composition'),
