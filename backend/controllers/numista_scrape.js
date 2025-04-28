@@ -132,7 +132,7 @@ async function getNumistaDetailsJSON(numistaNumber) {
             composition: getFeatureValue($, 'Composition'),
             mass: getFeatureValue($, 'Weight'),
             diameter: getFeatureValue($, 'Diameter'),
-            orientation: getFeatureValue($, 'Orientation'),
+            orientation: getFeatureValue($, 'Orientation').slice(-2),
             references: getReferences($),
             numistaRef: getFeatureValue($, 'Number'),
             variations: getVariationData($),

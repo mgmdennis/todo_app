@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@100;200;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -187,6 +187,10 @@ body{
   font-family: "Fira Sans Extra Condensed", sans-serif;
 }
 
+.light {
+  font-weight: 300;
+}
+
 .grade {
   position: absolute;
   font-weight: bold;
@@ -201,12 +205,14 @@ body{
 .grade-details {
   position: absolute;
   font-style: italic;
+  font-family: "Fira Sans Extra Condensed", sans-serif;
+  font-weight: lighter;
   font-size: 4cqw;
   text-align: right;
   
-  top: 6cqw;
+  top: 8cqw;
   right: 0;
-  width: 15%;
+  width: 30%;
 }
 
 .issuer {
@@ -233,7 +239,6 @@ body{
 
 .mintage {
   position: absolute;
-  font-weight: lighter;
   font-size: 4.5cqw;
   text-align: left;
   
@@ -247,7 +252,7 @@ body{
   font-weight: lighter;
   /* font-style: italic; */
   font-size: 4.5cqw;
-  font-weight: 200;
+  font-weight: 300;
   text-align: left;
 
   resize: none;
@@ -261,24 +266,36 @@ body{
 
 .composition {
   position: absolute;
-  font-weight: 100;
   font-size: 4.5cqw;
   text-align: right;
   /* display: flex;
   align-items: flex-end; */
 
+  /* color: red; */
+
+
   resize: none;
 
   /* font-family: 'Fira Sans', sans-serif; */
+
+  width: 65%;
   
   bottom: 0;
   right: 0;
-  width: 70%;
+}
+
+.numista-number {
+  position: absolute;
+  font-size: 4.5cqw;
+  text-align: left;
+  
+  top: 0;
+  left: 0;
+  width: 40%;
 }
 
 .mass {
   position: absolute;
-  font-weight: lighter;
   font-size: 4.5cqw;
   text-align: left;
   
@@ -289,30 +306,32 @@ body{
 
 .diameter {
   position: absolute;
-  font-weight: lighter;
   font-size: 4.5cqw;
   text-align: left;
   
-  bottom:8cqw;
+  bottom:6.5cqw;
   left:0;
   width: 30%;
 }
 
+.orientation {
+  position: absolute;
+  font-size: 4.5cqw;
+  text-align: left;
+  
+  bottom:12.5cqw;
+  left:0;
+  width: 10%;
+}
+
 .date-added {
   position: absolute;
-  font-weight: lighter;
   font-size: 4.5cqw;
   text-align: right;
   
   top:0;
   right:0;
   width: 30%;
-}
-
-.numista-number{
-  font-weight: lighter;
-  font-size: 3cqw;
-  text-align: center;
 }
 
 .reference {
@@ -329,7 +348,7 @@ body{
 .qr-code {
   position: absolute;
   
-  top:10cqw;
+  top:12.5cqw;
   bottom: 16.5cqw;
   left:16.5cqw;
   right:16.5cqw;

@@ -38,13 +38,14 @@ const Create = () => {
         setIssuer(jsonData.issuer);
         setComposition(jsonData.composition);
         setMass(jsonData.mass);
+        setOrientation(jsonData.orientation);
+       
         if (jsonData.diameter.length > 0) {
             setDiameter("⌀ " + jsonData.diameter);
         }
         
-        
         if (jsonData.variations && jsonData.variations.length > 0) {
-            updateFillOutDateAndDetails(jsonData.variations[0]);
+            updateFillOutDateAndDetails(jsonData.variations[0], jsonData.description);
         }
 
         if (jsonData.references && jsonData.references.length > 0) {
@@ -52,7 +53,7 @@ const Create = () => {
         }
     }
 
-    var updateFillOutDateAndDetails = (variation) => {
+    var updateFillOutDateAndDetails = (variation, description) => {
         setYear(variation.date);
 
         if (variation.mintage.length > 0) {
@@ -65,11 +66,17 @@ const Create = () => {
 
         if(comments.includes("Proof")) {
             setGrade("Proof")
-            comments.replace("Proof", "");
-            setDetails(comments);
+            comments = comments.replace("Proof", "");
         } else {
             setGrade("");
-            setDetails(comments);
+        }
+
+        console.log("updateFillout: " + description);
+
+        if (comments.length > 0) {
+            setDetails(comments + "\n" + description);
+        } else {
+            setDetails(description);
         }
     }
 
@@ -101,7 +108,7 @@ const Create = () => {
                         const selectedIndex = e.target.selectedIndex;
                         console.log("Selected Index:", selectedIndex);
 
-                        updateFillOutDateAndDetails(numistaDetails.variations[selectedIndex]);
+                        updateFillOutDateAndDetails(numistaDetails.variations[selectedIndex], numistaDetails.description);
                     }}>
                     {
                         (numistaDetails && numistaDetails.variations && numistaDetails.variations.length > 0) ? (
@@ -197,7 +204,7 @@ const Create = () => {
                     aria-label="Issuer"
                     value={issuer}
                     plaintext
-                    className="label issuer"
+                    className={"label issuer" + (issuer.length > 20 ? " narrow" : "")}
                     onChange={(e) => setIssuer(e.target.value)}
                 />
                 <Form.Control
@@ -225,6 +232,8 @@ const Create = () => {
                     value={gradeDetails}
                     plaintext
                     className="label grade-details"
+                    as="textarea"
+                    rows={6}
                     onChange={(e) => setGradeDetails(e.target.value)}
                 />
                 <Form.Control
@@ -257,7 +266,7 @@ const Create = () => {
             <p />
             <div className="parent-label-large">
                 <p
-                    className={"label composition " + (composition.length > 30 ? " narrow" : "")}>
+                    className={"label composition " + (composition.length > 45 ? " narrow light" : "")}>
                     {composition}
                 </p>
                 <Form.Control
@@ -284,12 +293,20 @@ const Create = () => {
                     className="label date-added"
                     onChange={(e) => setDateAdded(e.target.value)}
                 />
+                <Form.Control
+                    placeholder="Orientation"
+                    aria-label="Orientation"
+                    value={orientation}
+                    plaintext
+                    className="label orientation"
+                    onChange={(e) => setOrientation(e.target.value)}
+                />
+                <p className="label numista-number">{`N# ${numistaNumber}`}</p>
                 
                 <div className="qr-code">
                     <QRCode
                         value={`https://numista.com/catalogue/pieces${numistaNumber}.html`}
                      />
-                     <p className="label numista-number">{`(N# ${numistaNumber})`}</p>
                 </div>
             </div>
             
